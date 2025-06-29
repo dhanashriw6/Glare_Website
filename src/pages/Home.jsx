@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  FaChevronRight,
-  FaStar,
-  FaAward,
-  FaUsers,
-  FaGlobe,
-  FaArrowRight,
-  FaPlay,
-  FaShieldAlt,
-  FaTruck,
-  FaHeadphones,
-} from "react-icons/fa";
-import banner from "../assets/banner1.jpg";
-import c1 from "../assets/c1.jpg";
-import c2 from "../assets/c2.jpg";
-import c3 from "../assets/c3.png";
+import icons from "../assets/icons";
+
+import images from "../assets/images";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -25,21 +12,21 @@ const Home = () => {
       title: "Precision Crafted Kitchen Excellence",
       subtitle:
         "Discover premium kitchen appliances that blend tradition with innovation",
-      image: banner,
+      image: images.banner1,
       cta: "Explore Collection",
     },
     {
       title: "Sharp Performance, Every Time",
       subtitle:
         "Professional-grade knives and cutting tools for culinary perfection",
-      image: banner,
+      image: images.banner2,
       cta: "View Products",
     },
     {
       title: "Innovation Meets Tradition",
       subtitle:
         "Three decades of excellence in kitchen appliance manufacturing",
-      image: banner,
+      image: images.banner1,
       cta: "Our Story",
     },
   ];
@@ -52,7 +39,7 @@ const Home = () => {
         "Premium knives, kitchen gadgets and cutlery for professional cooking",
       color: "from-red-500 to-red-600",
       accentColor: "red",
-      image: c1,
+      image: images.c1,
       products: [
         "Kitchen Knives",
         "Cutting Tools",
@@ -67,7 +54,7 @@ const Home = () => {
         "Gas lighters, precision scissors and premium strainers for every kitchen",
       color: "from-blue-500 to-blue-600",
       accentColor: "blue",
-      image: c2,
+      image: images.c2,
       products: [
         "Gas Lighters",
         "Kitchen Scissors",
@@ -82,7 +69,7 @@ const Home = () => {
         "Elegant melamine dinnerware and serving solutions for modern dining",
       color: "from-green-500 to-green-600",
       accentColor: "green",
-      image: c3,
+      image: images.c3,
       products: [
         "Melamine Plates",
         "Serving Trays",
@@ -93,25 +80,25 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: "30+", label: "Years of Excellence", icon: FaAward },
-    { number: "1M+", label: "Happy Customers", icon: FaUsers },
-    { number: "50+", label: "Countries Served", icon: FaGlobe },
-    { number: "500+", label: "Product Range", icon: FaStar },
+    { number: "30+", label: "Years of Excellence", icon: icons.FaAward },
+    { number: "1M+", label: "Happy Customers", icon: icons.FaUsers },
+    { number: "50+", label: "Countries Served", icon: icons.FaGlobe },
+    { number: "500+", label: "Product Range", icon: icons.FaStar },
   ];
 
   const features = [
     {
-      icon: FaShieldAlt,
+      icon: icons.FaShieldAlt,
       title: "Premium Quality",
       description: "Crafted with the finest materials for lasting durability",
     },
     {
-      icon: FaTruck,
+      icon: icons.FaTruck,
       title: "Fast Delivery",
       description: "Quick and secure shipping to your doorstep",
     },
     {
-      icon: FaHeadphones,
+      icon: icons.FaHeadphones,
       title: "24/7 Support",
       description: "Expert customer service whenever you need it",
     },
@@ -156,7 +143,7 @@ const Home = () => {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
             />
           </div>
         ))}
@@ -171,7 +158,7 @@ const Home = () => {
             </p>
             <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
               {heroSlides[currentSlide].cta}
-              <FaArrowRight className="inline ml-2 w-5 h-5" />
+              <icons.FaArrowRight className="inline ml-2 w-5 h-5" />
             </button>
           </div>
         </div>
@@ -282,7 +269,6 @@ const Home = () => {
                   <div className="space-y-6">
                     {/* Company Header */}
                     <div>
-                     
                       <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
                         {company.tagline}
                       </h3>
@@ -321,33 +307,45 @@ const Home = () => {
                         className={`w-1/2 bg-gradient-to-r ${company.color} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group`}
                       >
                         <span>View Products</span>
-                        <FaArrowRight className="inline ml-2 w-5 h-5" />{" "}
+                        <icons.FaArrowRight className="inline ml-2 w-5 h-5" />{" "}
                       </button>
-                     
                     </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center mt-20">
-            <div className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl mx-auto border border-gray-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Ready to explore our complete range?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Discover thousands of premium kitchen products across all our
-                brands
-              </p>
-              <button className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                Browse All Products
-              </button>
-            </div>
-          </div>
         </div>
       </section>
+      {/* <section className="bg-white py-20">
+  <div className="max-w-7xl mx-auto px-4">
+    <h2 className="text-center text-4xl md:text-5xl font-bold mb-12">
+      Our <span className="text-red-500">Companies</span>
+    </h2>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {companies.map((company, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+        >
+          <img
+            src={company.image}
+            alt={company.name}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-6 space-y-4">
+            <h3 className="text-2xl font-semibold">{company.tagline}</h3>
+            <p className="text-gray-600 text-sm">{company.description}</p>
+            <button className="inline-flex items-center text-red-500 font-semibold hover:underline">
+              View Products <icons.FaArrowRight className="ml-2" />
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> */}
 
       {/* Features Section */}
       <section id="features" className="py-20 bg-gray-50">
@@ -387,7 +385,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-red-500 to-orange-500 text-white">
         <div className="max-w-4xl mx-auto text-center px-4">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Transform Your Kitchen?
@@ -399,11 +397,7 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-red-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
               View Our Products
-              <FaArrowRight className="inline ml-2 w-5 h-5" />
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-red-600 transition-all duration-300">
-              <FaPlay className="inline mr-2 w-5 h-5" />
-              Watch Our Story
+              <icons.FaArrowRight className="inline ml-2 w-5 h-5" />
             </button>
           </div>
         </div>

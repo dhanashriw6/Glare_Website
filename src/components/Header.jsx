@@ -1,17 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import {
-  FaBars,
-  FaTimes,
-  FaChevronDown,
-  FaPhone,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn
-} from 'react-icons/fa';
-import logo from "../assets/logo.png"
+import React, { useState, useEffect } from "react";
+import icons from "../assets/icons";
+
+import images from "../assets/images";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,32 +10,36 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/' },
+    { name: "Home", href: "/" },
     {
-      name: 'Our Companies', href: '/companies', dropdown: [
-        { name: 'Glare - Kitchen Essentials', href: '/companies/glare' },
-        { name: 'Krish - Premium Range', href: '/companies/krish' },
-        { name: 'Glare Solutions & Trays', href: '/companies/glare-solutions' }
-      ]
+      name: "Our Companies",
+      href: "/companies",
+      dropdown: [
+        { name: "Glare - Kitchen Essentials", href: "/companies/glare" },
+        { name: "Krish - Premium Range", href: "/companies/krish" },
+        { name: "Glare Solutions & Trays", href: "/companies/glare-solutions" },
+      ],
     },
     {
-      name: 'Products', href: '/products', dropdown: [
-        { name: 'Kitchen Knives', href: '/products/knives' },
-        { name: 'Scissors & Cutters', href: '/products/scissors' },
-        { name: 'Lighters & Utility', href: '/products/lighters' },
-        { name: 'Kitchen Trays', href: '/products/trays' },
-        { name: 'All Products', href: '/products' }
-      ]
+      name: "Products",
+      href: "/products",
+      dropdown: [
+        { name: "Kitchen Knives", href: "/products/knives" },
+        { name: "Scissors & Cutters", href: "/products/scissors" },
+        { name: "Lighters & Utility", href: "/products/lighters" },
+        { name: "Kitchen Trays", href: "/products/trays" },
+        { name: "All Products", href: "/products" },
+      ],
     },
-    { name: 'About Us', href: '/about' },
-    { name: 'Quality', href: '/quality' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Contact', href: '/contact' }
+    { name: "About Us", href: "/about" },
+
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -55,58 +49,76 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
             <div className="flex items-center">
-              <FaPhone className="w-4 h-4 mr-2" />
-              <span>+91 7878778778</span>
+              <icons.FaPhone className="w-4 h-4 mr-2" />
+              <span>+91 2827 252512 / 252391</span>
             </div>
             <div className="flex items-center">
-              <FaEnvelope className="w-4 h-4 mr-2" />
-              <span>info@glareindia.com</span>
+              <icons.FaEnvelope className="w-4 h-4 mr-2" />
+              <span>sales@glareindia.com</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
             <span>Follow Us:</span>
             <div className="flex space-x-2">
-              <FaFacebookF className="w-4 h-4 hover:text-red-200 cursor-pointer" />
-              <FaTwitter className="w-4 h-4 hover:text-red-200 cursor-pointer" />
-              <FaInstagram className="w-4 h-4 hover:text-red-200 cursor-pointer" />
-              <FaLinkedinIn className="w-4 h-4 hover:text-red-200 cursor-pointer" />
+              <a
+                href="https://www.facebook.com/GlareIndia/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <icons.FaFacebookF className="w-4 h-4 hover:text-red-200 cursor-pointer" />
+              </a>
+              <icons.FaTwitter className="w-4 h-4 hover:text-red-200 cursor-pointer" />
+              <a
+                href="https://www.instagram.com/glareindia/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <icons.FaInstagram className="w-4 h-4 hover:text-red-200 cursor-pointer" />
+              </a>
+              <icons.FaLinkedinIn className="w-4 h-4 hover:text-red-200 cursor-pointer" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Header */}
-      <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-sm py-4'}`}>
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "bg-white shadow-lg py-2"
+            : "bg-white/95 backdrop-blur-sm py-4"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-                <a href="/" className="flex items-center">
-                    <img src={logo} alt="Glare Logo" className="h-20 w-auto" />
-                    
-                </a>
+              <a href="/" className="flex items-center">
+                <img
+                  src={images.logo}
+                  alt="Glare Logo"
+                  className="h-20 w-auto"
+                />
+              </a>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
               {navigation.map((item) => (
-                <div
-                  key={item.name}
-                  className="relative group"
-                  onMouseEnter={() => setActiveDropdown(item.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
+                <div key={item.name} className="relative group">
                   <a
                     href={item.href}
                     className="flex items-center text-gray-700 hover:text-red-600 font-medium transition-colors duration-200"
                   >
                     {item.name}
                     {item.dropdown && (
-                      <FaChevronDown className="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
+                      <icons.FaChevronDown className="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
                     )}
                   </a>
-                  {item.dropdown && activeDropdown === item.name && (
-                    <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+
+                  {/* Dropdown */}
+                  {item.dropdown && (
+                    <div className="absolute top-full left-0 mt-2 hidden group-hover:block w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
                       {item.dropdown.map((subItem) => (
                         <a
                           key={subItem.name}
@@ -137,7 +149,11 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 text-gray-700 hover:text-red-600 transition-colors duration-200"
             >
-              {isMenuOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <icons.FaTimes className="w-6 h-6" />
+              ) : (
+                <icons.FaBars className="w-6 h-6" />
+              )}
             </button>
           </div>
 

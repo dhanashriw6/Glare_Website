@@ -1,42 +1,32 @@
-import React from 'react';
-import {
-  FaPhone,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaFacebookF,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube
-} from 'react-icons/fa';
-import logo from "../assets/logo.png"
-
+import React from "react";
+import images from "../assets/images";
+import icons from "../assets/icons";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Companies', href: '/companies' },
-    { name: 'Quality Standards', href: '/quality' },
-    { name: 'Gallery', href: '/gallery' },
-    { name: 'Career', href: '/career' },
-    { name: 'Contact Us', href: '/contact' }
+    { name: "About Us", href: "/about" },
+    { name: "Our Companies", href: "/companies" },
+    { name: "Quality Standards", href: "/quality" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Career", href: "/career" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   const productCategories = [
-    { name: 'Kitchen Knives', href: '/products/knives' },
-    { name: 'Scissors & Cutters', href: '/products/scissors' },
-    { name: 'Lighters & Utility', href: '/products/lighters' },
-    { name: 'Kitchen Trays', href: '/products/trays' },
-    { name: 'Kitchen Accessories', href: '/products/accessories' },
-    { name: 'All Products', href: '/products' }
+    { name: "Kitchen Knives", href: "/products/knives" },
+    { name: "Scissors & Cutters", href: "/products/scissors" },
+    { name: "Lighters & Utility", href: "/products/lighters" },
+    { name: "Kitchen Trays", href: "/products/trays" },
+    { name: "Kitchen Accessories", href: "/products/accessories" },
+    { name: "All Products", href: "/products" },
   ];
 
   const companies = [
-    { name: 'Glare Kitchen Essentials', href: '/companies/glare' },
-    { name: 'Krish Premium Range', href: '/companies/krish' },
-    { name: 'Glare Solutions & Trays', href: '/companies/glare-solutions' }
+    { name: "Glare Kitchen Essentials", href: "/companies/glare" },
+    { name: "Krish Premium Range", href: "/companies/krish" },
+    { name: "Glare Solutions & Trays", href: "/companies/glare-solutions" },
   ];
 
   return (
@@ -45,22 +35,35 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-6">
             <div>
-                <a href="/" className="flex items-center">  <img src={logo} alt="Glare Logo" className="h-20 w-auto" /></a>
+              <a href="/" className="flex items-center">
+                {" "}
+                <img
+                  src={images.logo}
+                  alt="Glare Logo"
+                  className="h-20 w-auto"
+                />
+              </a>
               <p className="text-gray-300 leading-relaxed">
-                Your trusted partner for premium kitchen appliances. Three decades of excellence in manufacturing quality products that make cooking a pleasure.
+                Your trusted partner for premium kitchen appliances. Three
+                decades of excellence in manufacturing quality products that
+                make cooking a pleasure.
               </p>
             </div>
             <div className="space-y-3">
-              <div className="flex items-center text-gray-300">
-                <FaMapMarkerAlt className="w-5 h-5 mr-3 text-red-500" />
-                <span>Rajkot, Gujarat, India</span>
+              <div className="flex items-start text-gray-300">
+                <icons.FaMapMarkerAlt className="w-5 h-5 mr-3 text-red-500" />
+                <span>
+                  Plot No. 1/C, Survey No. 188/P, National Highway 27, Gondal
+                  Road, Village : Veraval (Shapar) Dist. : Rajkot - 360 024
+                  Gujarat - INDIA
+                </span>
               </div>
               <div className="flex items-center text-gray-300">
-                <FaPhone className="w-5 h-5 mr-3 text-red-500" />
-                <span>+91 7878778778</span>
+                <icons.FaPhone className="w-5 h-5 mr-3 text-red-500" />
+                <span>+91 2827 252512 / 252391</span>
               </div>
               <div className="flex items-center text-gray-300">
-                <FaEnvelope className="w-5 h-5 mr-3 text-red-500" />
+                <icons.FaEnvelope className="w-5 h-5 mr-3 text-red-500" />
                 <span>info@glareindia.com</span>
               </div>
             </div>
@@ -68,19 +71,19 @@ const Footer = () => {
               <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
               <div className="flex space-x-3">
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 cursor-pointer transition-colors duration-200">
-                  <FaFacebookF className="w-5 h-5" />
+                  <icons.FaFacebookF className="w-5 h-5" />
                 </div>
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 cursor-pointer transition-colors duration-200">
-                  <FaTwitter className="w-5 h-5" />
+                  <icons.FaTwitter className="w-5 h-5" />
                 </div>
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 cursor-pointer transition-colors duration-200">
-                  <FaInstagram className="w-5 h-5" />
+                  <icons.FaInstagram className="w-5 h-5" />
                 </div>
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 cursor-pointer transition-colors duration-200">
-                  <FaLinkedinIn className="w-5 h-5" />
+                  <icons.FaLinkedinIn className="w-5 h-5" />
                 </div>
                 <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 cursor-pointer transition-colors duration-200">
-                  <FaYoutube className="w-5 h-5" />
+                  <icons.FaYoutube className="w-5 h-5" />
                 </div>
               </div>
             </div>
@@ -163,18 +166,21 @@ const Footer = () => {
               © {currentYear} Glare Appliances Pvt. Ltd. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="/privacy" className="text-gray-400 hover:text-red-400 transition-colors duration-200">
+              <a
+                href="/privacy"
+                className="text-gray-400 hover:text-red-400 transition-colors duration-200"
+              >
                 Privacy Policy
               </a>
-              <a href="/terms" className="text-gray-400 hover:text-red-400 transition-colors duration-200">
+              <a
+                href="/terms"
+                className="text-gray-400 hover:text-red-400 transition-colors duration-200"
+              >
                 Terms of Service
-              </a>
-              <a href="/sitemap" className="text-gray-400 hover:text-red-400 transition-colors duration-200">
-                Sitemap
               </a>
             </div>
             <div className="text-gray-400 text-sm">
-              Powered by <span className="text-red-400">WebTech Solutions</span>
+              Powered by <span className="text-red-400">DW</span>
             </div>
           </div>
         </div>
