@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import icons from "../assets/icons";
+import { Link } from "react-router-dom";
 
 import images from "../assets/images";
 
@@ -40,6 +41,7 @@ const Home = () => {
       color: "from-red-500 to-red-600",
       accentColor: "red",
       image: images.c1,
+      link: "/companies/glare",
       products: [
         "Kitchen Knives",
         "Cutting Tools",
@@ -55,6 +57,7 @@ const Home = () => {
       color: "from-blue-500 to-blue-600",
       accentColor: "blue",
       image: images.c2,
+      link: "/companies/krish",
       products: [
         "Gas Lighters",
         "Kitchen Scissors",
@@ -63,13 +66,14 @@ const Home = () => {
       ],
     },
     {
-      name: "GLARE",
+      name: "GLARE SOLUTIONS",
       tagline: "100% Melamine Tableware & Trays",
       description:
         "Elegant melamine dinnerware and serving solutions for modern dining",
       color: "from-green-500 to-green-600",
       accentColor: "green",
       image: images.c3,
+      link: "/companies/glare-solutions",
       products: [
         "Melamine Plates",
         "Serving Trays",
@@ -302,14 +306,13 @@ const Home = () => {
                     </div> */}
 
                     {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                      <button
-                        className={`w-1/2 bg-gradient-to-r ${company.color} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group`}
-                      >
-                        <span>View Products</span>
-                        <icons.FaArrowRight className="inline ml-2 w-5 h-5" />{" "}
-                      </button>
-                    </div>
+                    <Link
+                      to={company.link}
+                      className={`w-1/2 bg-gradient-to-r ${company.color} text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group`}
+                    >
+                      <span>View Products</span>
+                      <icons.FaArrowRight className="inline ml-2 w-5 h-5" />
+                    </Link>
                   </div>
                 </div>
               </div>

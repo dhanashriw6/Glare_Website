@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
             <div className="space-y-3">
               <div className="flex items-start text-gray-300">
-                <icons.FaMapMarkerAlt className="w-5 h-5 mr-3 text-red-500" />
+                <icons.FaMapMarkerAlt className="w-19 h-5 mr-3 text-red-500" />
                 <span>
                   Plot No. 1/C, Survey No. 188/P, National Highway 27, Gondal
                   Road, Village : Veraval (Shapar) Dist. : Rajkot - 360 024
