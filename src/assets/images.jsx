@@ -11,6 +11,7 @@ import k1 from './k1.png';
 import k2 from './k2.png';
 import k3 from './k3.png';  
 import k4 from './k4.png';
+import aboutus from './aboutus.png';
 
 const images = {
   banner1,
@@ -26,6 +27,7 @@ const images = {
   k2, 
   k3,
   k4,
+  aboutus
 
 };
 

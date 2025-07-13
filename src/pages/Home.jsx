@@ -84,7 +84,7 @@ const Home = () => {
   ];
 
   const stats = [
-    { number: "30+", label: "Years of Excellence", icon: icons.FaAward },
+    { number: "25+", label: "Years of Excellence", icon: icons.FaAward },
     { number: "1M+", label: "Happy Customers", icon: icons.FaUsers },
     { number: "50+", label: "Countries Served", icon: icons.FaGlobe },
     { number: "500+", label: "Product Range", icon: icons.FaStar },
