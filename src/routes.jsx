@@ -4,11 +4,9 @@ import Home from "./pages/Home";
 import Glare from "./pages/Glare";
 import Krish from "./pages/Krish";
 import GlareSolutions from "./pages/GlareSolutions";
-import KitchenKnives from "./pages/KitchenKnives";
+import CategoryProducts from "./pages/CategoryProducts"; // New component for dynamic categories
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-
-// import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +17,22 @@ const router = createBrowserRouter([
       { path: "companies/glare", element: <Glare /> },
       { path: "companies/krish", element: <Krish /> },
       { path: "companies/glare-solutions", element: <GlareSolutions /> },
-      { path: "companies/glare/kitchenknives", element: <KitchenKnives /> },
-        { path: "about", element: <About /> },
-        { path: "contact", element: <Contact /> },
-      //   { path: "*", element: <NotFound /> },
+      // Dynamic routes for category products for all companies
+      { 
+        path: "companies/glare/category/:categoryId", 
+        element: <CategoryProducts /> 
+      },
+      { 
+        path: "companies/krish/category/:categoryId", 
+        element: <CategoryProducts /> 
+      },
+      { 
+        path: "companies/glare-solutions/category/:categoryId", 
+        element: <CategoryProducts /> 
+      },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      // { path: "*", element: <NotFound /> },
     ],
   },
 ]);

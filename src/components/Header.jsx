@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import icons from "../assets/icons";
-
 import images from "../assets/images";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -25,22 +26,19 @@ const Header = () => {
         { name: "Glare Solutions & Trays", href: "/companies/glare-solutions" },
       ],
     },
-    {
-      name: "Products",
-      href: "/products",
-      dropdown: [
-        { name: "Kitchen Knives", href: "/products/knives" },
-        { name: "Scissors & Cutters", href: "/products/scissors" },
-        { name: "Lighters & Utility", href: "/products/lighters" },
-        { name: "Kitchen Trays", href: "/products/trays" },
-        { name: "All Products", href: "/products" },
-      ],
-    },
     { name: "About Us", href: "/about" },
-
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
   ];
+
+  const handleNavigation = (href) => {
+    navigate(href);
+    setActiveDropdown(null); // Close dropdown after navigation
+  };
+
+  const handleDropdownItemClick = (href) => {
+    handleNavigation(href);
+  };
 
   return (
     <>
@@ -93,40 +91,55 @@ const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <a href="/" className="flex items-center">
+              <button onClick={() => handleNavigation("/")} className="flex items-center">
                 <img
                   src={images.logo}
                   alt="Glare Logo"
                   className="h-20 w-auto"
                 />
-              </a>
+              </button>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              {navigation.map((item) => (
-                <div key={item.name} className="relative group">
-                  <a
-                    href={item.href}
-                    className="flex items-center text-gray-700 hover:text-red-600 font-medium transition-colors duration-200"
+              {navigation.map((item, idx) => (
+                <div key={item.name} className="relative">
+                  <button
+                    type="button"
+                    className="flex items-center text-gray-700 hover:text-red-600 font-medium transition-colors duration-200 focus:outline-none"
+                    aria-haspopup={!!item.dropdown}
+                    aria-expanded={activeDropdown === idx}
+                    onClick={() => {
+                      if (item.dropdown) {
+                        setActiveDropdown(activeDropdown === idx ? null : idx);
+                      } else {
+                        handleNavigation(item.href);
+                      }
+                    }}
                   >
                     {item.name}
                     {item.dropdown && (
-                      <icons.FaChevronDown className="ml-1 w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
+                      <icons.FaChevronDown
+                        className={`ml-1 w-3 h-3 transition-transform duration-200 ${
+                          activeDropdown === idx ? "rotate-180" : ""
+                        }`}
+                      />
                     )}
-                  </a>
-
+                  </button>
                   {/* Dropdown */}
-                  {item.dropdown && (
-                    <div className="absolute top-full left-0 mt-2 hidden group-hover:block w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50">
+                  {item.dropdown && activeDropdown === idx && (
+                    <div
+                      className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                      onMouseLeave={() => setActiveDropdown(null)}
+                    >
                       {item.dropdown.map((subItem) => (
-                        <a
+                        <button
                           key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                          className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-200"
+                          onClick={() => handleDropdownItemClick(subItem.href)}
                         >
                           {subItem.name}
-                        </a>
+                        </button>
                       ))}
                     </div>
                   )}
@@ -136,12 +149,12 @@ const Header = () => {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <a
-                href="/contact"
+              <button
+                onClick={() => handleNavigation("/contact")}
                 className="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors duration-200 font-medium"
               >
                 Get Quote
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -163,37 +176,43 @@ const Header = () => {
               <nav className="mt-4 space-y-2">
                 {navigation.map((item) => (
                   <div key={item.name}>
-                    <a
-                      href={item.href}
-                      className="block px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
-                      onClick={() => setIsMenuOpen(false)}
+                    <button
+                      onClick={() => {
+                        handleNavigation(item.href);
+                        setIsMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors duration-200"
                     >
                       {item.name}
-                    </a>
+                    </button>
                     {item.dropdown && (
                       <div className="ml-4 space-y-1">
                         {item.dropdown.map((subItem) => (
-                          <a
+                          <button
                             key={subItem.name}
-                            href={subItem.href}
-                            className="block px-4 py-2 text-sm text-gray-600 hover:text-red-600 transition-colors duration-200"
-                            onClick={() => setIsMenuOpen(false)}
+                            onClick={() => {
+                              handleNavigation(subItem.href);
+                              setIsMenuOpen(false);
+                            }}
+                            className="block w-full text-left px-4 py-2 text-sm text-gray-600 hover:text-red-600 transition-colors duration-200"
                           >
                             {subItem.name}
-                          </a>
+                          </button>
                         ))}
                       </div>
                     )}
                   </div>
                 ))}
                 <div className="mt-4 px-4">
-                  <a
-                    href="/contact"
+                  <button
+                    onClick={() => {
+                      handleNavigation("/contact");
+                      setIsMenuOpen(false);
+                    }}
                     className="block w-full text-center bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors duration-200"
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Get Quote
-                  </a>
+                  </button>
                 </div>
               </nav>
             </div>

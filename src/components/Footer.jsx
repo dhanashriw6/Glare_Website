@@ -8,20 +8,20 @@ const Footer = () => {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Our Companies", href: "/companies" },
-    { name: "Quality Standards", href: "/quality" },
+
     { name: "Gallery", href: "/gallery" },
     { name: "Career", href: "/career" },
     { name: "Contact Us", href: "/contact" },
   ];
 
-  const productCategories = [
-    { name: "Kitchen Knives", href: "/products/knives" },
-    { name: "Scissors & Cutters", href: "/products/scissors" },
-    { name: "Lighters & Utility", href: "/products/lighters" },
-    { name: "Kitchen Trays", href: "/products/trays" },
-    { name: "Kitchen Accessories", href: "/products/accessories" },
-    { name: "All Products", href: "/products" },
-  ];
+  // const productCategories = [
+  //   { name: "Kitchen Knives", href: "/products/knives" },
+  //   { name: "Scissors & Cutters", href: "/products/scissors" },
+  //   { name: "Lighters & Utility", href: "/products/lighters" },
+  //   { name: "Kitchen Trays", href: "/products/trays" },
+  //   { name: "Kitchen Accessories", href: "/products/accessories" },
+  //   { name: "All Products", href: "/products" },
+  // ];
 
   const companies = [
     { name: "Glare Kitchen Essentials", href: "/companies/glare" },
@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="space-y-6">
             <div>
               <a href="/" className="flex items-center">
@@ -106,7 +106,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          {/* <div>
             <h3 className="text-xl font-semibold mb-6">Our Products</h3>
             <ul className="space-y-3">
               {productCategories.map((product) => (
@@ -121,7 +121,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           <div>
             <h3 className="text-xl font-semibold mb-6">Our Companies</h3>
